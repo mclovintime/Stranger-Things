@@ -21,12 +21,27 @@ export async function registerUser(finalUserName, finalPass, setToken)    {
   .then(result => {
     setToken(result.data.token)
     
-    
+
   })
   .catch(console.error);
 
 }
 
 export async function attemptLogin(token)   {
+  fetch('https://strangers-things.herokuapp.com/api/COHORT-NAME/users/me', {
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}` 
+  },
+}).then(response => response.json())
+  .then(result => {
+    console.log(result);
+  })
+  .catch(console.error);
 
 }
+
+// export async function (setToken) {
+//   setToken('')
+  
+// }

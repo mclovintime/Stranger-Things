@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Navbar} from './';
 import LoginPage from "./LoginPage";
-import { registerUser } from "../api";
+import { attemptLogin, registerUser } from "../api";
 
 
 
@@ -15,6 +15,10 @@ const Main = () => {
   if (finalPass.length){
     registerUser(finalUsername, finalPass, setToken)
   }
+  // if (token.length){
+    attemptLogin(token)
+    
+  // }
   console.log(token);
   
   return (
