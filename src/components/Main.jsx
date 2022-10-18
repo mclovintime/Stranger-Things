@@ -1,14 +1,22 @@
 import React, {useState} from "react";
 import {Navbar} from './';
 import LoginPage from "./LoginPage";
+import { registerUser } from "../api";
 
 
 
 const Main = () => {
   const [finalUsername, setFinalUser] = useState('')
   const [finalPass, setFinalPass] = useState('')
+  const [token, setToken] = useState('')
 
-  console.log(finalUsername, finalPass)
+  
+
+  if (finalPass.length){
+    registerUser(finalUsername, finalPass, setToken)
+  }
+  console.log(token);
+  
   return (
     <div id="main">
     <Navbar/>
