@@ -1,0 +1,27 @@
+
+#loginform   {
+border: 2px solid black;
+border-radius: 20px;
+width: 300px;
+align-items: center;
+text-align: center;
+padding-bottom: 20px;
+}
+
+#wholepage  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 200px;
+    height: 300px;
+}
+
+p{
+    font-size: 20px;
+    font-family:'Courier New', Courier, monospace
+}
+
+#prompt {
+    
+    
+}

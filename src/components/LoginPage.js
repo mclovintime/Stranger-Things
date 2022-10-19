@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import Main from './Main';
+import './loginpage.css'
 
 const LoginPage = ({setFinalUser, setFinalPass}) =>   {
     
@@ -12,10 +13,11 @@ function submitInfo() {
 }
 
     return  (
+        <div id="wholepage">
         <div id="loginform">
 
-            <p>TESTING</p>
-            <label>
+            <p>Login or register below</p>
+            <label id="prompt">
                 Please enter username:
             </label><br/>
             <input type="text" 
@@ -30,6 +32,7 @@ function submitInfo() {
             onChange={(event) => setPassword(event.target.value)}/>
                 <br/>
             <button onClick={() => submitInfo()}>Submit</button>
+        </div>
         </div>
     )
     

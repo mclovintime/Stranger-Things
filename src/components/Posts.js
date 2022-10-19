@@ -28,7 +28,7 @@ return (
 
 
 {returnedPosts.data.posts.map(({description, title, location, price, author}) => (
-    <div>
+    <div class="userPosts">
         <p id="title">{title}</p>
         <p id="location">{location}</p>
         <p id="description">{description}</p>

@@ -13,7 +13,29 @@ body {
   min-height: 40px;
   background-color: #222222;
   color: white;
-  display: flex;
-  align-items: center;
+ display:flex;
+ justify-content: space-between;
 }
 
+#logo {
+  margin-left: 20px;
+  box-shadow: 0 0 3px 3px teal;
+  padding: 7px;
+  border-radius: 20px;
+}
+
+.rightside  {
+  display:flex;
+  justify-content: space-between;
+}
+
+#rightSide  {
+  display: flex;
+  padding-right: 40px;
+  width: 280px;
+  margin-right: 40px;
+  align-items: right;
+  justify-content: space-between;
+  align-items: center;
+  
+}

@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from "react-dom/client"
 import {Main} from './components'
+import {BrowserRouter} from 'react-router-dom'
 
 fetch('https://strangers-things.herokuapp.com/api/2209/posts', {
   method: 'POST',
@@ -13,5 +14,6 @@ fetch('https://strangers-things.herokuapp.com/api/2209/posts', {
 
 const container = document.getElementById('app')
 const root = ReactDOM.createRoot(container)
+
 
 root.render(<Main />)
