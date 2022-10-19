@@ -19,6 +19,7 @@ export async function registerUser(finalUserName, finalPass, setToken)    {
   })
 }).then(response => response.json())
   .then(result => {
+    if(result.data != null)
     setToken(result.data.token)
     
 
@@ -27,7 +28,7 @@ export async function registerUser(finalUserName, finalPass, setToken)    {
 
 }
 
-export async function attemptLogin(token)   {
+export async function attemptLogin(token, setUserData)   {
   fetch('https://strangers-things.herokuapp.com/api/COHORT-NAME/users/me', {
   headers: {
     'Content-Type': 'application/json',
@@ -35,7 +36,9 @@ export async function attemptLogin(token)   {
   },
 }).then(response => response.json())
   .then(result => {
-    console.log(result);
+    
+    setUserData(result)
+
   })
   .catch(console.error);
 
@@ -45,3 +48,16 @@ export async function attemptLogin(token)   {
 //   setToken('')
   
 // }
+
+export async function displayPosts(setReturnedPosts)    {
+    fetch('https://strangers-things.herokuapp.com/api/2209-FTB-ET-WEB-FT/posts', {
+        
+      }).then(response => response.json())
+        .then(result => {
+          //console.log(result, "is posts");
+          setReturnedPosts(result)
+      
+        })
+        .catch(console.error);
+      
+      }
