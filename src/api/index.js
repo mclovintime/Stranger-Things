@@ -61,3 +61,18 @@ export async function displayPosts(setReturnedPosts)    {
         .catch(console.error);
       
       }
+
+
+export async function getMessages(token, setMessages)   {
+  fetch('https://strangers-things.herokuapp.com/api/2209-FTB-ET-WEB-FT/users/me', {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    },
+  }).then(response => response.json())
+    .then(result => {
+      console.log(result);
+    })
+    .catch(console.error);
+  
+}

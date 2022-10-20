@@ -20,7 +20,7 @@ const Main = () => {
   const [finalPass, setFinalPass] = useState('')
   const [token, setToken] = useState('')
   const [userData, setUserData] = useState({})
-
+  
 
   
   useEffect(() => {
@@ -37,7 +37,7 @@ const Main = () => {
     <Route path="/posts" element={<Posts />}>
       
     </Route>
-    <Route path="messages" element={<Messages/>}>
+    <Route path="messages" element={<Messages token={token}/>}>
       
     </Route>
       <Route index element={<Posts />}>
