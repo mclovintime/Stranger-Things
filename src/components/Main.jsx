@@ -5,6 +5,8 @@ import { attemptLogin, registerUser } from "../api";
 import Posts from "./Posts";
 import Messages from "./Messages";
 
+
+
 import {
   RouterProvider,
   Route,
@@ -20,24 +22,31 @@ const Main = () => {
   const [finalPass, setFinalPass] = useState('')
   const [token, setToken] = useState('')
   const [userData, setUserData] = useState({})
+  const [loginToken, setLoginToken] = useState('')
+  const [loginMessage, setLoginMessage] = useState('')
+
   
 
   
-  useEffect(() => {
-    //Runs on the first render
-    //And any time any dependency value changes
-    registerUser(finalUsername, finalPass, setToken)
-  }, [finalPass]);
+  
   
     const router = createBrowserRouter(createRoutesFromElements(
       <Route path="/" element={<Navbar/>}>
-      <Route path="login" element={<LoginPage setFinalUser={setFinalUser} finalUsername={finalUsername} setFinalPass={setFinalPass} />}>
+      <Route path="login" element={<LoginPage 
+      loginMessage={loginMessage} 
+      setFinalUser={setFinalUser} 
+      finalUsername={finalUsername} 
+      setFinalPass={setFinalPass}  
+      finalPass={finalPass} 
+      setLoginToken={setLoginToken} 
+      setLoginMessage={setLoginMessage}
+      loginToken={loginToken}/>}>
       
     </Route>
     <Route path="/posts" element={<Posts />}>
       
     </Route>
-    <Route path="messages" element={<Messages token={token}/>}>
+    <Route path="messages" element={<Messages loginToken={loginToken}/>}>
       
     </Route>
       <Route index element={<Posts />}>
@@ -46,11 +55,11 @@ const Main = () => {
     </Route>
     )
     )
-  useEffect(() => {
-    //Runs on the first render
-    //And any time any dependency value changes
-    attemptLogin(token, setUserData)
-  }, [token]);
+  // useEffect(() => {
+  //   //Runs on the first render
+  //   //And any time any dependency value changes
+  //   attemptLogin(token, setUserData)
+  // }, [token]);
 
   // console.log(userData);
 
@@ -64,6 +73,12 @@ const Main = () => {
   
   </main>
   );
+
+
+
 };
+
+
+
 
 export default Main;

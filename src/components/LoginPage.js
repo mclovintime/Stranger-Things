@@ -1,22 +1,35 @@
 import React, {useState} from 'react'
 import Main from './Main';
 import './loginpage.css'
+import { tryLogins } from './Main';
+import { loginUser } from "../api";
+import { registerUser } from '../api';
 
-const LoginPage = ({setFinalUser, setFinalPass}) =>   {
+const LoginPage = ({loginMessage, setFinalUser,finalUsername, setFinalPass, finalPass, setLoginToken, setLoginMessage, loginToken, setToken}) =>   {
     
 const [username, setName] = useState('');
 const [password, setPassword] = useState('');
 
+async function tryLogins() {
+    loginUser(finalUsername, finalPass, setLoginToken, setLoginMessage)
+    if (loginToken == "") {
+    registerUser(finalUsername, finalPass, setToken, setLoginMessage)
+  }
+  }
+
 function submitInfo() {
    setFinalUser(username)
    setFinalPass(password)
+   tryLogins()
 }
+
 
     return  (
         <div id="wholepage">
+            <p>{loginMessage}</p>
         <div id="loginform">
 
-            <p>Login or register below</p>
+            <p id="logintag">Login or register below</p>
             <label id="prompt">
                 Please enter username:
             </label><br/>
