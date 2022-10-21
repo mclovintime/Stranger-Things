@@ -1,18 +1,34 @@
 import React, {useEffect, useState} from 'react'
 import { getMessages } from '../api'
 // import { displayMessages } from '../api'
+import { getMessagesTest } from '../api'
 
 const Messages = ({loginToken}) =>    {
 
-    console.log(loginToken, "is login token from messages js")
 
 const [messages, setMessages] = useState("nomessages")
 
-console.log(loginToken, 'is token in messages')
-getMessages(loginToken, setMessages)
+
+
+
+
+useEffect(() =>     {
+async function fetchMessages()  {
+    const localToken = localStorage.getItem("userToken")
+    
+
+    await getMessages(setMessages, localToken)
+    console.log(messages)
+}
+fetchMessages()
+
+}, [])
 
     return(
-        <p>messages test</p>
+        <div>
+            <p>messages test, nothing to display from returned obj</p>
+            {/* <p>{messages.data.posts}</p> */}
+        </div>
     )
 
 }

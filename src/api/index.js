@@ -5,7 +5,7 @@ const BASE = 'https://strangers-things.herokuapp.com'
 
 export async function registerUser(finalUserName, finalPass, setToken, setLoginMessage)    {
     
-    fetch('https://strangers-things.herokuapp.com/api/COHORT-NAME/users/register', {
+    fetch('https://strangers-things.herokuapp.com/api/2209-FTB-ET-WEB-FT/users/register', {
   method: "POST",
   headers: {
     'Content-Type': 'application/json'
@@ -21,6 +21,7 @@ export async function registerUser(finalUserName, finalPass, setToken, setLoginM
     if(result.data != null) {
     setToken(result.data.token)
     
+    
      setLoginMessage("Thank you for registering!")
     
   }
@@ -32,27 +33,28 @@ export async function registerUser(finalUserName, finalPass, setToken, setLoginM
 
 //
 
-export async function loginUser(finalUserName, finalPass, setLoginToken, setLoginMessage)  {
+export async function loginUser(trueUser, truePassword, setLoginToken, setLoginMessage)  {
 
 
 
-fetch('https://strangers-things.herokuapp.com/api/COHORT-NAME/users/login', {
+fetch('https://strangers-things.herokuapp.com/api/2209-FTB-ET-WEB-FT/users/login', {
   method: "POST",
   headers: {
     'Content-Type': 'application/json'
   },
   body: JSON.stringify({
     user: {
-      username: `${finalUserName}`,
-      password: `${finalPass}`
+      username: `${trueUser}`,
+      password: `${truePassword}`
     }
   })
 }).then(response => response.json())
   .then(result => {
     if(result.data != null)  {
       
-    setLoginToken(result.data.token)
+    // setLoginToken(result.data.token)
     setLoginMessage(result.data.message)
+    localStorage.setItem("userToken", result.data.token)
   }
   })
   .catch(console.error);
@@ -61,7 +63,7 @@ fetch('https://strangers-things.herokuapp.com/api/COHORT-NAME/users/login', {
 //
 
 export async function attemptLogin(loginToken, setUserData)   {
-  fetch('https://strangers-things.herokuapp.com/api/COHORT-NAME/users/me', {
+  fetch('https://strangers-things.herokuapp.com/api/2209-FTB-ET-WEB-FT/users/me', {
   headers: {
     'Content-Type': 'application/json',
     'Authorization': `Bearer ${loginToken}` 
@@ -86,7 +88,7 @@ export async function displayPosts(setReturnedPosts)    {
         
       }).then(response => response.json())
         .then(result => {
-          //console.log(result, "is posts");
+          console.log(result, "is posts");
           setReturnedPosts(result)
       
         })
@@ -95,23 +97,42 @@ export async function displayPosts(setReturnedPosts)    {
       }
 
 
-export async function getMessages(token, setMessages)   {
+export async function getMessages(setMessages, localToken)   {
 
-  if (token){
-    console.log(token, "line 96 token")
-    fetch('https://strangers-things.herokuapp.com/api/2209-FTB-ET-WEB-FT/users/me', {
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      },
-    }).then(response => response.json())
-      .then(result => {
-        console.log(token, "is token passed to function")
-        console.log(result);
-      })
-      .catch(console.error);
-  }
+  console.log(localToken)
+  
+const response = await fetch('https://strangers-things.herokuapp.com/api/2209-FTB-ET-WEB-FT/users/me', {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${localToken}`
+    },
+  })
 
-  
-  
+const newResponse = await response.json()
+console.log(newResponse)
+setMessages(newResponse)
+}
+
+export async function submitPostFunc(title, description, price, willDeliver)  {
+  const localToken = localStorage.getItem("userToken")
+
+  fetch('https://strangers-things.herokuapp.com/api/2209-FTB-ET-WEB-FT/posts', {
+  method: "POST",
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localToken}`
+  },
+  body: JSON.stringify({
+    post: {
+      title: title,
+      description: description,
+      price: price,
+      willDeliver: willDeliver
+    }
+  })
+}).then(response => response.json())
+  .then(result => {
+    console.log(result);
+  })
+  .catch(console.error);
 }

@@ -4,6 +4,9 @@ import LoginPage from "./LoginPage";
 import { attemptLogin, registerUser } from "../api";
 import Posts from "./Posts";
 import Messages from "./Messages";
+import { getMessagesTest } from "../api";
+import AddPost from "./AddPost";
+import SinglePost from "./SinglePost";
 
 
 
@@ -26,7 +29,7 @@ const Main = () => {
   const [loginMessage, setLoginMessage] = useState('')
 
   
-
+// getMessagesTest()
   
   
   
@@ -40,17 +43,23 @@ const Main = () => {
       finalPass={finalPass} 
       setLoginToken={setLoginToken} 
       setLoginMessage={setLoginMessage}
-      loginToken={loginToken}/>}>
-      
-    </Route>
+      loginToken={loginToken}
+      setToken={setToken}/>}>
+    </Route> 
+
     <Route path="/posts" element={<Posts />}>
-      
     </Route>
+    <Route path="/singlepost" element={<SinglePost />}>
+    </Route>
+
+    <Route path="/addpost" element={<AddPost />}>
+    </Route>
+
     <Route path="messages" element={<Messages loginToken={loginToken}/>}>
-      
     </Route>
+
       <Route index element={<Posts />}>
-        
+
       </Route>
     </Route>
     )

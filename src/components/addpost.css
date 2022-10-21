@@ -1,0 +1,42 @@
+
+#formbody   {
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 50px;
+    box-shadow: 3px 3px 3px;
+    width: 500px;
+    
+}
+
+
+#whole  {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.inputs {
+    /* float:inline-end; */
+}
+
+#thebutton  {
+    
+}
+
+#titleask   {
+    display:flex;
+    justify-content: space-between;
+}
+#descriptionask   {
+    display:flex;
+    justify-content: space-between;
+}
+#priceAsk   {
+    display:flex;
+    justify-content: space-between;
+}
+#willDeliver   {
+    display:flex;
+    justify-content: space-between;
+}

@@ -1,27 +1,41 @@
 import React, {useState} from 'react'
 import Main from './Main';
 import './loginpage.css'
-import { tryLogins } from './Main';
+import { tryLogin } from './Main';
 import { loginUser } from "../api";
 import { registerUser } from '../api';
 
-const LoginPage = ({loginMessage, setFinalUser,finalUsername, setFinalPass, finalPass, setLoginToken, setLoginMessage, loginToken, setToken}) =>   {
+const LoginPage = ({loginMessage, setFinalUser, finalUsername, setFinalPass, finalPass, setLoginToken, setLoginMessage, loginToken, setToken}) =>   {
     
 const [username, setName] = useState('');
 const [password, setPassword] = useState('');
+const [trueUser, setTrueUser] = useState('');
+const [truePassword, setTruePassword] = useState('');
 
-async function tryLogins() {
-    loginUser(finalUsername, finalPass, setLoginToken, setLoginMessage)
+async function tryLogin() {
+    loginUser(trueUser, finalPass, setLoginToken, setLoginMessage)
+    console.log(trueUser)
+  }
+  
+
+  async function tryRegister() {
+    
     if (loginToken == "") {
-    registerUser(finalUsername, finalPass, setToken, setLoginMessage)
+        
+    registerUser(username, password, setToken, setLoginMessage)
   }
   }
 
-function submitInfo() {
-   setFinalUser(username)
-   setFinalPass(password)
-   tryLogins()
+async function submitLogin() {
+   loginUser(username, password, setLoginToken, setLoginMessage)
+  
 }
+
+async function submitRegister() {
+    setFinalUser(username)
+    setFinalPass(password)
+    tryRegister()
+ }
 
 
     return  (
@@ -44,7 +58,8 @@ function submitInfo() {
             required value={password} 
             onChange={(event) => setPassword(event.target.value)}/>
                 <br/>
-            <button onClick={() => submitInfo()}>Submit</button>
+            <button onClick={() => submitLogin()}>Login</button>
+            <button onClick={() => submitRegister()}>Register</button>
         </div>
         </div>
     )
