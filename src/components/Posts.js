@@ -5,8 +5,15 @@ import { Outlet, Link } from 'react-router-dom'
 import { Hsetting } from './SinglePost'
 
 const Posts = ({}) =>   {
-
-    
+    //for single post
+    const [Sdescription, setSdescription] = useState("")
+    const [Htitle, setHtitle] = useState("")
+    const [Hlocation, setHlocation] = useState("")
+    const [Hprice, setHprice] = useState("")
+    const [Hauthor, setauthor] = useState("")
+    const [HcreatedAt, setHcreatedAt] = useState("")
+    const [HupdatedAt, setHupdatedAt] = useState("")
+    //
     const [returnedPosts, setReturnedPosts] = useState("empty")
     
 
