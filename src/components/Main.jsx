@@ -28,6 +28,15 @@ const Main = () => {
   const [loginToken, setLoginToken] = useState('')
   const [loginMessage, setLoginMessage] = useState('')
 
+  const [Hdescription, setSdescription] = useState("")
+  const [Htitle, setHtitle] = useState("")
+  const [Hlocation, setHlocation] = useState("")
+  const [Hprice, setHprice] = useState("")
+  const [Hauthor, setauthor] = useState("")
+  const [HcreatedAt, setHcreatedAt] = useState("")
+  const [HupdatedAt, setHupdatedAt] = useState("")
+  const [Hid, setHid] = useState("")
+
   
 // getMessagesTest()
   
@@ -47,9 +56,28 @@ const Main = () => {
       setToken={setToken}/>}>
     </Route> 
 
-    <Route path="/posts" element={<Posts />}>
+    <Route path="/posts" element={<Posts 
+    setSdescription={setSdescription}
+    setHtitle={setHtitle}
+    setHlocation={setHlocation}
+    setHprice={setHprice}
+    setauthor={setauthor}
+    setHcreatedAt={setHcreatedAt}
+    setHupdatedAt={setHupdatedAt}
+    setHid={setHid}
+    
+    />}>
     </Route>
-    <Route path="/singlepost" element={<SinglePost />}>
+    <Route path="/singlepost" element={<SinglePost 
+    description={Hdescription}
+    title={Htitle}
+    location={Hlocation}
+    price={Hprice}
+    author={Hauthor}
+    createdAt={HcreatedAt}
+    updatedAt={HupdatedAt}
+    id={Hid}
+    />}>
     </Route>
 
     <Route path="/addpost" element={<AddPost />}>

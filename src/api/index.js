@@ -88,7 +88,7 @@ export async function displayPosts(setReturnedPosts)    {
         
       }).then(response => response.json())
         .then(result => {
-          console.log(result, "is posts");
+          // console.log(result, "is posts");
           setReturnedPosts(result)
       
         })
@@ -128,6 +128,28 @@ export async function submitPostFunc(title, description, price, willDeliver)  {
       description: description,
       price: price,
       willDeliver: willDeliver
+    }
+  })
+}).then(response => response.json())
+  .then(result => {
+    console.log(result);
+  })
+  .catch(console.error);
+}
+
+export async function sendMessage(message, postId){
+  const localToken = localStorage.getItem("userToken")
+  console.log(localToken, "is the supplied token")
+
+  fetch(`https://strangers-things.herokuapp.com/api/2209-FTB-ET-WEB-FT/posts/${postId}/messages`, {
+  method: "POST",
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localToken}`
+  },
+  body: JSON.stringify({
+    message: {
+      content: message
     }
   })
 }).then(response => response.json())
