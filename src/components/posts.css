@@ -1,34 +1,33 @@
-
-
-#title  {
-    color:rgb(0, 0, 0);
-    font-weight: bold;
-    font-size: 22px;
-    margin-bottom: 10px;
+#title {
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  font-size: 22px;
+  margin-bottom: 10px;
 }
 
 #navbar {
-    background: rgb(18, 65, 87);
-
+  background: rgb(18, 65, 87);
 }
 
-
-.userPosts{
-    border-bottom: 2px solid black;
-    border-top: .5px solid black;
-    border-radius: 10px;
-    padding-left: 15px;
-    box-shadow: 3px 3px 3px rgb(129, 129, 129);
-    margin-top: 10px;
+.userPosts {
+  border-bottom: 2px solid black;
+  border-top: 0.5px solid black;
+  border-radius: 10px;
+  padding-left: 15px;
+  box-shadow: 3px 3px 3px rgb(129, 129, 129);
+  margin-top: 10px;
 }
 
 #header {
-    text-align: center;
+  text-align: center;
 }
 
-#addPost    {
-    text-align: center;
-    margin-top: -15px;
-    color: blue;
-    
+#addPost {
+  text-align: center;
+  margin-top: -15px;
+  color: blue;
+}
+
+#aPost {
+  text-decoration: none;
 }
